@@ -1,0 +1,10 @@
+name: pipeline-basico
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: executa comando
+        run: echo "Configuração inicial do pipeline, teste"
