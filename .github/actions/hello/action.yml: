@@ -1,19 +1,19 @@
-name: steps examples
-
-on:
-  #push
-  workflow_dispatch
-
-jobs:
-  hello_world_job:
-    runs-on: ubuntu-latest
-    name: Example of custom action
-    steps:
-      - name: Checkout Actions
-        uses: actions/checkout@v4
-      - id: step-caller
-        uses: "./.github/actions/hello"
-        with:
-          the-caller: 'Myself'
-      - run: echo random-number ${{ steps.step-caller.outputs.random-number }}
-        shell: bash
+name: 'Hello World'
+description: 'Greet the caller'
+inputs:
+  the-caller:
+    description: 'Who is there'
+    required: true
+    default: 'World'
+outputs:
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-id }}
+runs:
+  using: "composite"
+  steps:
+    - run: echo Hello ${{ inputs.the-caller }}.
+      shell: bash
+    - id: random-number-generator
+      run: echo "::set-output name=random-id::$(echo $RANDOM)"
+      shell: bash
