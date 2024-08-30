@@ -1,0 +1,11 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "<AWS_ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com/<PROJECT_NAME>/<MODULE_NAME>:<TAG>","Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "80"
+    }
+  ]
+}
